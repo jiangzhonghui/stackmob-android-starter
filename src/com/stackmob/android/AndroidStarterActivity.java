@@ -86,13 +86,17 @@ public class AndroidStarterActivity extends Activity {
 		stackmob = StackMobCommon.getStackMobInstance();
 		
 		// Register for GCM Push
-		GCMRegistrar.checkDevice(this);
-		GCMRegistrar.checkManifest(this);
-		final String regId = GCMRegistrar.getRegistrationId(this);
-		if (regId.equals("")) {
-			registerForPush();
-		} else {
-		  Log.v(TAG, "Already registered");
+		try {
+			GCMRegistrar.checkDevice(this);
+			GCMRegistrar.checkManifest(this);
+			final String regId = GCMRegistrar.getRegistrationId(this);
+			if (regId.equals("")) {
+				registerForPush();
+			} else {
+				Log.v(TAG, "Already registered");
+			}
+		} catch(UnsupportedOperationException e) {
+			Log.w(TAG, "This device doesn't support gcm. Push will not work");
 		}
 
 		//Uncomment for an example of how to display a banner ad with Inneractive

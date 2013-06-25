@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.stackmobstarterproject"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- All icons used are generated from: http://android-ui-utils.googlecode.com/hg/asset-studio/dist/index.html -->
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- Do not set any label for this TodoActivity, we will name our action bar title programmatically -->
+        <!--
+            The configChanges orientation|screenSize is to override our Activity lifecycle so that
+            it won't call onResume when orientation change
+         -->
+        <activity
+            android:name="com.stackmobstarterproject.TodoActivity"
+            android:configChanges="orientation|screenSize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.stackmobstarterproject.TodoDetailActivity"
+            android:label="@string/todo_details"
+            android:configChanges="orientation|screenSize" />
+
+    </application>
+
+</manifest>

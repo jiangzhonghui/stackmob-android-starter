@@ -1,0 +1,64 @@
+/**
+ * Copyright 2012-2013 StackMob
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.util;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
+/**
+ * This is just a class that contains static methods to help us with some methods that are
+ *   bound to Activity
+ */
+public class ActivityUtil {
+
+  /**
+   * Method to switch to another activity
+   * @param from the Context of your current activity
+   * @param to the Activity Class that you want to switch to e.x. TodoActivity.class
+   * @param bundle data Bundle
+   * @param withAnimation true if you want to switch activity with an animation
+   */
+  public static void switchActivity(Context from,
+                                     Class<?> to,
+                                     Bundle bundle,
+                                     boolean withAnimation) {
+    Intent i = new Intent(from, to);
+    i.putExtras(bundle);
+    if (!withAnimation) {
+      i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+    }
+    from.startActivity(i);
+  }
+
+  /**
+   * Method to show a Toast (with Toast.LENGTH_LONG by default)
+   * @param act Activity where this method is called from e.x. TodoActivity.this
+   * @param msg message to show
+   */
+  public static void showToast(final Activity act, final String msg) {
+    act.runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        Toast.makeText(act.getBaseContext(), msg, Toast.LENGTH_LONG).show();
+      }
+    });
+  }
+
+}

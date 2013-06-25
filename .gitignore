@@ -11,3 +11,6 @@ tmp
 *.iws
 *.ipr
 *.iml
+
+.idea
+out

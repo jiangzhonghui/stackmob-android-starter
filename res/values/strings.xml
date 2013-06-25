@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StackMob Starter Project</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- Action Bar -->
+    <string name="todo_list">Todo List</string>
+    <string name="todo_details">Todo Details</string>
+
+    <!-- Todo Detail Page -->
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+
+    <!-- Add New Todo Dialog -->
+    <string name="add_new_todo">Add New Todo</string>
+    <string name="refresh">Refresh</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
+
+</resources>

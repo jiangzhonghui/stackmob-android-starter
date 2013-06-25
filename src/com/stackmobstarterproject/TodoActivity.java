@@ -65,8 +65,8 @@ public class TodoActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_todo);
 
-    // initialize StackMob
-    StackMobAndroid.init(getApplicationContext(), 0, "cff876ce-f111-410e-b35c-ab22abeac7d7");
+    // initialize StackMob --- Change YOUR_PUBLIC_KEY with your app's public key
+    StackMobAndroid.init(getApplicationContext(), 0, "YOUR_PUBLIC_KEY");
 
     mTodoListView = (ListView) this.findViewById(R.id.atTodoListView);
 

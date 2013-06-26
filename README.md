@@ -9,7 +9,5 @@ A Starter Project for New Android Projects that use StackMob for their Backend
 
 
 For your information:
-  `android:minSdkVersion="14"`
-  `android:targetSdkVersion="16"`
-
-Hence, this project only works for Android 4.0+
+* `android:minSdkVersion="14"` and `android:targetSdkVersion="16"`. Hence, this project only works for Android 4.0+.
+* Uses StackMob Android SDK v1.3.4

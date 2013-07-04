@@ -66,7 +66,7 @@ public class TodoActivity extends Activity {
     setContentView(R.layout.activity_todo);
 
     // initialize StackMob --- Change YOUR_PUBLIC_KEY with your app's public key
-    StackMobAndroid.init(getApplicationContext(), 0, "YOUR_PUBLIC_KEY");
+    StackMobAndroid.init(getApplicationContext(), 0, "cff876ce-f111-410e-b35c-ab22abeac7d7");
 
     mTodoListView = (ListView) this.findViewById(R.id.atTodoListView);
 
@@ -110,7 +110,7 @@ public class TodoActivity extends Activity {
            * Of course you can, if you want to do so, take a look into passing a Serializable object
            *   into Bundle in Android docs
            */
-          ActivityUtil.switchActivity(thisContext, TodoDetailActivity.class, newBundle, true);
+          ActivityUtil.switchActivity(TodoActivity.this, TodoDetailActivity.class, newBundle, true);
         } else {
           ActivityUtil.showToast(TodoActivity.this,
               "Item at position " + position + " does not exist");
@@ -284,12 +284,6 @@ public class TodoActivity extends Activity {
       @Override
       public void failure(StackMobException e) {
         setRefreshActionButtonState(false); // hide the spinner progress
-        runOnUiThread(new Runnable() {
-          @Override
-          public void run() {
-
-          }
-        });
         ActivityUtil.showToast(TodoActivity.this,
             "Error occured when fetching todos: " + e.getMessage());
       }

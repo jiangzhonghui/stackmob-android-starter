@@ -17,10 +17,11 @@
 package com.util;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.stackmobstarterproject.R;
 
 /**
  * This is just a class that contains static methods to help us with some methods that are
@@ -30,21 +31,45 @@ public class ActivityUtil {
 
   /**
    * Method to switch to another activity
-   * @param from the Context of your current activity
+   * @param from the Activity of your current activity
    * @param to the Activity Class that you want to switch to e.x. TodoActivity.class
    * @param bundle data Bundle
    * @param withAnimation true if you want to switch activity with an animation
+   *                      current activity will slide out to left
+   *                      next activity will slide in from right
    */
-  public static void switchActivity(Context from,
+  public static void switchActivity(Activity from,
                                      Class<?> to,
                                      Bundle bundle,
                                      boolean withAnimation) {
-    Intent i = new Intent(from, to);
+    Intent i = new Intent(from.getApplicationContext(), to);
     i.putExtras(bundle);
     if (!withAnimation) {
       i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
     }
     from.startActivity(i);
+    if (withAnimation) {
+      /**
+       * first param is for the next activity
+       * second param is for your current activity
+       */
+      from.overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+    }
+  }
+
+  /**
+   * Method to finish an activity with an animation
+   * Current activity will finish with an animation of sliding out to right
+   * Prev activity (in the stack) will resume with an animation of sliding in from right
+   * @param act current activity
+   */
+  public static void finishActivity(Activity act) {
+    act.finish();
+    /**
+     * first param is for the next activity
+     * second param is for your current activity
+     */
+    act.overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
   }
 
   /**

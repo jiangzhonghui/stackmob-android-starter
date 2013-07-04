@@ -48,8 +48,6 @@ public class TodoDetailActivity extends Activity {
 
   private Todo todo; // this is going to be the todo we want to show the details of
 
-  private Context thisContext = this;
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -139,7 +137,7 @@ public class TodoDetailActivity extends Activity {
         });
 
         // finish the activity
-        finish();
+        ActivityUtil.finishActivity(TodoDetailActivity.this);
       }
     });
   }
@@ -156,7 +154,7 @@ public class TodoDetailActivity extends Activity {
     switch(item.getItemId()) {
       case android.R.id.home:
         // since there are only 2 activites, there's no need to use the NavUtils
-        finish();
+        ActivityUtil.finishActivity(TodoDetailActivity.this);
         return true;
     }
     return super.onOptionsItemSelected(item);

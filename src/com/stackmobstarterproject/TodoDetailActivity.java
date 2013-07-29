@@ -20,7 +20,9 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -153,8 +155,11 @@ public class TodoDetailActivity extends Activity {
   public boolean onOptionsItemSelected(MenuItem item) {
     switch(item.getItemId()) {
       case android.R.id.home:
-        // since there are only 2 activites, there's no need to use the NavUtils
-        ActivityUtil.finishActivity(TodoDetailActivity.this);
+        NavUtils.navigateUpTo(this, new Intent(this, TodoActivity.class));
+
+        // add animation
+        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+
         return true;
     }
     return super.onOptionsItemSelected(item);

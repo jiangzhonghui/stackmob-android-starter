@@ -25,7 +25,7 @@ A Starter Project for New Android Projects that use StackMob for their Backend
   4. Select `Create project from existing sources` and `Next`
   5. For simplicity, don't change `Project Name` and `Project Location`. Hit `Next`
   6. You should see 2 directories checked, 1 is `path/to/stackmob-android-starter` and the other one is `path/to/stackmob-android-starter/src`. Hit `Next`
-  7. For libraries, you should see 2 of them: `android-suuport-v4.jar` and `stackmob-android-sdk-1.3.4.jar`
+  7. For libraries, you should see 2 of them: `android-support-v4.jar` and `stackmob-android-sdk-1.3.5.jar`
   8. For dependencies, `stackmob-android-starter` should be checked to use `libs`
   9. Make sure you have Java Virtual Machines since we will need to have that (if you don't have it, Google how to install JDK). Hit `Next`
   10. You should see `AndroidManifest.xml` checked. Hit `Finish`
@@ -37,4 +37,4 @@ A Starter Project for New Android Projects that use StackMob for their Backend
 ***
 ### Project Info ###
 * `android:minSdkVersion="14"` and `android:targetSdkVersion="16"`. Hence, this project only works for Android 4.0+.
-* Uses StackMob Android SDK v1.3.4
+* Uses StackMob Android SDK v1.3.5

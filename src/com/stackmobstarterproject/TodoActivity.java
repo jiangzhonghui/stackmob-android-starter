@@ -46,7 +46,7 @@ import java.util.List;
 /**
  * This is our main activity
  */
-public class TodoActivity extends Activity {
+public class TodoActivity extends BaseActivity {
 
   // this is where we are going to store our todo items
   private List<Todo> mTodos = new ArrayList<Todo>();
@@ -65,9 +65,6 @@ public class TodoActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_todo);
 
-    // initialize StackMob --- Change YOUR_PUBLIC_KEY with your app's public key
-    StackMobAndroid.init(getApplicationContext(), 0, "YOUR_PUBLIC_KEY");
-
     mTodoListView = (ListView) this.findViewById(R.id.atTodoListView);
 
     /**
@@ -78,7 +75,6 @@ public class TodoActivity extends Activity {
     setTitle("Todo List"); // set the title bar
 
     setOnClickListeners();
-    fetchAllTodos();
   }
 
   @Override

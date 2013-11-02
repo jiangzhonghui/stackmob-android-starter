@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
@@ -39,10 +40,13 @@ import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
 import com.util.ActivityUtil;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * This Activity is to show the details of our Todo
  */
-public class TodoDetailActivity extends Activity {
+public class TodoDetailActivity extends BaseActivity {
 
   private EditText mEditTextTitle;
   private Button mDeleteBtn;
@@ -81,6 +85,29 @@ public class TodoDetailActivity extends Activity {
       ab.setDisplayHomeAsUpEnabled(true);
     }
 
+    setOnClickListeners();
+  }
+
+  @Override
+  protected void onStart() {
+    super.onStart();
+
+    // we need to do this just in case user goes out of the app and reopen it
+    if (todo == null) {
+      final SharedPreferences prefs = getSharedPreferences(Constants.Pref.BASE_PREF,
+          Context.MODE_PRIVATE);
+      final String todoId = prefs.getString(Constants.Pref.TODO_ID, null);
+      final String todoTitle = prefs.getString(Constants.Pref.TODO_TITLE, null);
+      if (todoTitle != null && todoId != null) {
+        todo = new Todo(todoTitle);
+        todo.setID(todoId);
+        mEditTextTitle.setText(todoTitle);
+      } else {
+        // there's no point of showing this page if there's no data to show
+        finish();
+      }
+    }
+
     // move caret to end
     mEditTextTitle.setSelection(mEditTextTitle.getText().length());
 
@@ -94,7 +121,21 @@ public class TodoDetailActivity extends Activity {
       }
     });
 
-    setOnClickListeners();
+  }
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+
+    // store the title and id when user goes out of our app
+    final SharedPreferences prefs = getSharedPreferences(Constants.Pref.BASE_PREF,
+        Context.MODE_PRIVATE);
+    final SharedPreferences.Editor editor = prefs.edit();
+
+    // put the `todo` id and whatever the current content of our EditText
+    editor.putString(Constants.Pref.TODO_ID, todo.getID())
+          .putString(Constants.Pref.TODO_TITLE, mEditTextTitle.getText().toString())
+          .commit();
   }
 
   private void setOnClickListeners() {

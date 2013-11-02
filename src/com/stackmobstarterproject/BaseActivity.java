@@ -15,7 +15,7 @@ public class BaseActivity extends Activity {
     super.onCreate(savedInstanceState);
     // initialize StackMob --- Change YOUR_PUBLIC_KEY with your app's public key
     if (StackMob.getStackMob() == null) {
-      StackMobAndroid.init(getApplicationContext(), 0, "cff876ce-f111-410e-b35c-ab22abeac7d7");
+      StackMobAndroid.init(getApplicationContext(), 0, "YOUR_PUBLIC_KEY");
     }
   }
 }

@@ -22,4 +22,12 @@ package com.constants;
 public class Constants {
   public static final String TODO_ID = "todo_id";
   public static final String TODO_TITLE = "todo_title";
+
+  public static final class Pref {
+    public static final String BASE_PREF = "com.stackmob.apps.starterproject";
+
+    // TodoDetailActivity
+    public static final String TODO_TITLE = "detail.title";
+    public static final String TODO_ID = "detail.id";
+  }
 }

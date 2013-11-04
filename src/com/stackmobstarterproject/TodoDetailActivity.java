@@ -88,6 +88,12 @@ public class TodoDetailActivity extends BaseActivity {
     setOnClickListeners();
   }
 
+  /**
+   * Read about Android lifecycle for more information
+   *
+   * We're using SharedPreferences here to store the crucial data that we need to regenerate
+   *   our view when user leaves the app and reopen it
+   */
   @Override
   protected void onStart() {
     super.onStart();
@@ -123,6 +129,10 @@ public class TodoDetailActivity extends BaseActivity {
 
   }
 
+  /**
+   * This is when the app gets wiped out of the memory
+   * We want to store some data so that we could regenerate view to the same state to where it was
+   */
   @Override
   protected void onStop() {
     super.onStop();
@@ -156,7 +166,7 @@ public class TodoDetailActivity extends BaseActivity {
         });
 
         // finish the activity
-        finish();
+        ActivityUtil.finishActivity(TodoDetailActivity.this);
       }
     });
 
